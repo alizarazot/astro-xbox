@@ -1,5 +1,17 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const { title } = Astro.props;
+
+const menuItems = [
+	"Game Pass",
+	"Juegos",
+	"Dispositivos",
+	"Comunidad",
+	"Soporte técnico",
+	"Mi Xbox",
+	"Más",
+];
 ---
 
 <!doctype html>
@@ -13,8 +25,33 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<div class="bg-red-500">cabecerea</div>
+		<header
+			class="container h-16 flex items-center max-w-7xl mx-auto space-x-10"
+		>
+			<div class="flex space-x-6">
+				<img
+					class="h-6"
+					src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31"
+					alt=""
+					srcset=""
+				/>
+				<div class="w-[2px] h-6 bg-slate-800"></div>
+				<img class="h-6" src="/xbox.png" alt="" srcset="" />
+			</div>
+			{
+				menuItems.map((item) => (
+					<menu class="flex items-center space-x-1">
+						<a
+							href="#"
+							class="hover:underline underline-offset-8 decoration-2"
+						>
+							{item}
+						</a>
+						<Icon name="mdi:chevron-down" />
+					</menu>
+				))
+			}
+		</header>
 		<slot />
 	</body>
 </html>
-
